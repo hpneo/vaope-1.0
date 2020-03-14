@@ -1,0 +1,82 @@
+CREATE TABLE categorias(
+	categoria_idpadre SMALLINT(11) unsigned NOT NULL,
+	categoria_id SMALLINT(11) unsigned NOT NULL AUTO_INCREMENT,
+	categoria_nombre VARCHAR(60) NOT NULL,
+	categoria_titulo VARCHAR(70) NOT NULL,
+	PRIMARY KEY(categoria_id)
+);
+CREATE TABLE lugares(
+	lugar_idpadre BIGINT(11) unsigned NOT NULL,
+	lugar_id BIGINT(11) unsigned NOT NULL AUTO_INCREMENT,
+	lugar_nombre VARCHAR(30) NOT NULL,
+	lugar_titulo VARCHAR(40) NOT NULL,
+	lugar_coordenadas VARCHAR(120) NULL,
+	lugar_prefijotel VARCHAR(4) NULL,
+	PRIMARY KEY(lugar_id)
+);
+CREATE TABLE locales(
+	categoria_id SMALLINT(11) unsigned NOT NULL,
+	ciudad_id BIGINT(20) unsigned NOT NULL,
+	local_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	local_nombre VARCHAR(100) NOT NULL,
+	local_titulo VARCHAR(160) NOT NULL,
+	local_direccion VARCHAR(180) NOT NULL,
+	local_descripcion TEXT NOT NULL,
+	local_telefono VARCHAR(140) NULL,
+	local_tags VARCHAR(200) NULL,
+	local_nvotos INT(11) NOT NULL DEFAULT 0,
+	local_puntuacion FLOAT(10) NULL DEFAULT 0,
+	local_fecha INT(11) unsigned NOT NULL,
+	local_usuario BIGINT(20) unsigned NOT NULL,
+	PRIMARY KEY(local_id)
+);
+CREATE TABLE comentarios(
+	local_id BIGINT(20) unsigned NOT NULL,
+	comentario_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	comentario_autor BIGINT(20) unsigned NOT NULL,
+	comentario_cuerpo TEXT NOT NULL,
+	comentario_fecha INT(11) unsigned NOT NULL,
+	PRIMARY KEY(comentario_id)
+);
+CREATE TABLE favoritos(
+	local_id BIGINT(20) unsigned NOT NULL,
+	favorito_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	favorito_usuario BIGINT(20) unsigned NOT NULL,
+	favorito_fecha INT(11) unsigned NOT NULL,
+	PRIMARY KEY(favorito_id)
+);
+CREATE TABLE votos(
+	local_id BIGINT(20) unsigned NOT NULL,
+	voto_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	voto_autor BIGINT(20) unsigned NOT NULL,
+	voto_puntaje TINYINT(5) unsigned NOT NULL,
+	PRIMARY KEY(voto_id)
+);
+CREATE TABLE fotos(
+	local_id BIGINT(20) unsigned NOT NULL,
+	foto_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	foto_titulo VARCHAR(100) NOT NULL,
+	foto_descripcion TINYTEXT NULL,
+	foto_ruta VARCHAR(100) NOT NULL,
+	PRIMARY KEY(foto_id)
+);
+CREATE TABLE usuarios(
+	usuario_id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
+	usuario_nick VARCHAR(30) NOT NULL,
+	usuario_clave VARCHAR(64) NOT NULL,
+	usuario_email VARCHAR(100) NOT NULL,
+	usuario_mostrar_email ENUM('si', 'no') DEFAULT 'no',
+	usuario_descripcion MEDIUMTEXT NULL,
+	usuario_web20 VARCHAR(200) NULL,
+	usuario_url VARCHAR(100) NULL,
+	usuario_fecha INT(11) unsigned NOT NULL,
+	usuario_rango SMALLINT(5) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY(usuario_id)
+);
+CREATE TABLE paginas(
+	pagina_id INT(10) unsigned NOT NULL AUTO_INCREMENT,
+	pagina_titulo VARCHAR(100) NOT NULL,
+	pagina_nombre VARCHAR(100) NOT NULL,
+	pagina_contenido TEXT NOT NULL,
+	PRIMARY KEY(pagina_id)
+);

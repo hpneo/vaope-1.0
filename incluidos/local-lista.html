@@ -1,0 +1,17 @@
+﻿<div class="bloque-local-lista">
+	<h3><a href="{url_sitio}/local/{local-nombre}">{local-titulo}</a> </h3>
+	<h4>Descripci&oacute;n:</h4>
+	<p>{local-descripcion}</p>
+	<h4>Direcci&oacute;n:</h4>
+	<p>{local-direccion}</p>
+	<h4>Tel&eacute;fono:</h4>
+	{local-telefono}
+	<h4>Puntuaci&oacute;n:</h4>
+		{local-puntuacion}
+	<ul class="info-adicional">
+		<li><strong>Categor&iacute;a:</strong> <a href="{url_sitio}/categoria/{categoria-nombre}">{categoria-titulo}</a></li>
+		<li><strong>Zona:</strong> <a href="{url_sitio}/ciudad/{ciudad-nombre}">{ciudad-titulo}</a></li>
+		<li><strong>Agregado por:</strong> <a href="{url_sitio}/usuario/{local-usuario}">{local-usuario}</a></li>
+		<li><strong>Comentarios:</strong> <a href="{url_sitio}/local/{local-nombre}#comentarios">{n-comentarios}</a></li>
+	</ul>
+</div>
